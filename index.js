@@ -6,26 +6,25 @@ let randomNumber1 = generateRandomNumForDie();
 let randomNumber2 = generateRandomNumForDie();
 
 
-// console.log('randomNumber1 = ', randomNumber1);
-
-// Use randomNumber1 to pick out a random dice image between dice1.png to dice 6.png 
-// then place this image inside the left <img> element.
-
-// retrieve the image of the left die
-// let leftImage = document.querySelectorAll(".img1")[0];
-// console.log('leftImage = ', leftImage);
-
-// set the image on the left to the image of the die wih ramdomNumber1 number of dots on it
-// leftImage.setAttribute("src", `./images/dice${randomNumber1}.png`);
-
-// retrieve the image of the right die
-// let rightImage = document.querySelectorAll(".img2")[0];
-// console.log('rightImage = ', rightImage);
-
-// rightImage.setAttribute("src", `./images/dice${randomNumber2}.png`);
-
 updateImageByClass(".img1", randomNumber1);
 updateImageByClass(".img2", randomNumber2);
+
+// Change the text in the h1, (which currently says Refresh Me) to show which user won 
+// or if there was a draw depending on the dice values of player 1 (left) and player 2 (right).
+
+// retrieve the h1 element
+let h1Element = document.body.firstElementChild.firstElementChild;
+if(randomNumber1 > randomNumber2){
+    // Player 1 wins
+    h1Element.innerHTML = "Player 1 Wins!";
+} else if (randomNumber2 > randomNumber1){
+    // Player 2 wins
+    h1Element.innerHTML = "Player 2 Wins!";
+
+} else{
+    // It's a draw
+    h1Element.innerHTML = "Draw!";
+}
 
 // generates a random # for a die
 function generateRandomNumForDie(){
@@ -42,7 +41,9 @@ function generateRandomNumForDie(){
 
 // updates the image displayed on the site given the # generated and the image's class name
 function updateImageByClass(className, dieValue){
+    // retrieve the image with the class = className
     let image = document.querySelectorAll(className)[0];
+    // set the image to the image of the die wih dieValue number of dots on it
     image.setAttribute("src", `./images/dice${dieValue}.png`);
 
 }
