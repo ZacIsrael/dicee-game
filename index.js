@@ -10,3 +10,13 @@ randomNumber1 = randomNumber1 * 6;
 randomNumber1 = Math.floor(randomNumber1) + 1;
 
 console.log('randomNumber1 = ', randomNumber1);
+
+// Use randomNumber1 to pick out a random dice image between dice1.png to dice 6.png 
+// then place this image inside the left <img> element.
+
+// retrieve the image of the left die
+let leftImage = document.querySelectorAll(".img1")[0];
+console.log('leftImage = ', leftImage);
+
+// set the image on the left to the image of the die wih ramdomNumber1 number of dots on it
+leftImage.setAttribute("src", `./images/dice${randomNumber1}.png`);
